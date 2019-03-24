@@ -1,8 +1,9 @@
 const common = require('./webpack.common.js');
-const WebpackMerge = require('webpack-merge');
+const webpackMerge = require('webpack-merge');
+const webpack = require('webpack');
 const path = require('path');
 
-module.exports = WebpackMerge(common, {
+module.exports = webpackMerge(common, {
     mode: 'development',
     entry: {
         index: './src/index.js'
@@ -11,5 +12,9 @@ module.exports = WebpackMerge(common, {
         path: path.resolve(__dirname, '../dist'),
         filename: 'index.js'
     },
-    plugins: []
+    plugins: [
+        new webpack.DllReferencePlugin({
+            manifest: require(path.resolve(__dirname, '../dist/dll/lodash_manifest.json'))
+        })
+    ]
 });
