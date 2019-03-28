@@ -11,5 +11,9 @@ module.exports = WebpackMerge(common, {
         path: path.resolve(__dirname, '../dist'),
         filename: 'index.js'
     },
-    plugins: []
+    plugins: [],
+    stats: {
+        modules: false,
+        children: false
+    }
 });
