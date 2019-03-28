@@ -7,6 +7,14 @@ module.exports = WebpackMerge(common, {
     entry: {
         index: './src/index.js'
     },
+    externals: {
+        lodash: {
+            root: '_',
+            commonjs: 'lodash',
+            commonjs2: 'lodash',
+            amd: 'lodash'
+        }
+    },
     output: {
         path: path.resolve(__dirname, '../dist'),
         filename: 'index.js'
